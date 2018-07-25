@@ -61,36 +61,7 @@ LinkedList.prototype.nthFromEnd = function(value){
 
 
 // Create a function to check if a tree is a Binary Search Tree.
-function BST(value){
-  if(value === undefined){
-    throw new Error("Please initiate Binary Search Tree with a root value.");
-  }
-  this.value = value;
-  this.right = null;
-  this.left = null;
-}
-
-BST.prototype.insert = function(value){
-  if(value < this.value){
-    if(this.left === null){
-      this.left = new BST(value);
-      return this;
-    } else {
-      this.left.insert(value);
-    }
-  } else if(value > this.value){
-    if(this.right === null){
-      this.right = new BST(value);
-      return this;
-    } else {
-      this.right.insert(value);
-    }
-  } else {
-    return null;
-  }
-}
-
-// assuming Node will be passed in the following format:
+// Assuming Node will be passed in the following format:
 function Node(value){
   if(value === undefined){
     throw new Error("Please initiate Binary Search Tree with a root value.");
@@ -145,19 +116,19 @@ bst.insert(2);
 bst.insert(4);
 bst.insert(6);
 
-// testing regular Non-BST: should return false
-let tree = new Node(4);
-tree.left = new Node(1);
-tree.left.left = new Node(0);
-tree.left.right = new Node(2);
-tree.right = new Node(5);
-tree.right.right = new Node(6);
-tree.right.left = new Node(4);
-
 // BST
 //       3
 //   1       5
 // 0   2   4   6
+
+// testing regular Non-BST: should return false
+let tree = new Node(4);
+tree.left = new Node(1);
+tree.right = new Node(5);
+tree.left.left = new Node(0);
+tree.left.right = new Node(2);
+tree.right.left = new Node(3);
+tree.right.right = new Node(6);
 
 // Basic idea is its recursively checking whether or not the current value is within the lower and upper limits
 // Take this tree for example:
@@ -186,4 +157,67 @@ tree.right.left = new Node(4);
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+
+// Create a function to find the lowest common ancestor of two nodes.
+// For example: lowestCommonAncestor(head, firstNode, secondNode) --> lowestCommonAncestor(8, 4, 6);
+
+// Passing in 8 as the root node, 4 and 6 as the nodes, we want to return 3 -- 3 & 8 are both ancestors of 4 & 6 but 3 is the lowest common one between the two
+// lowestCommonAncestor(head, 4, 6) --> 3
+// lowestCommonAncestor(head, 3, 8) --> 8 (return head value if either node is the head)
+// lowestCommonAncestor(head, 14, 14) --> 14 (return value if nodes passed in are same node value)
+// lowestCommonAncestor(head, 4, 21) --> null (return null if node doesnt exist in tree)
+// lowestCommonAncestor(null, 3, 8) --> null (return null if root node passed in is null)
+
+//          10
+
+//      5        8
+
+//   9    3    6    4
+
+//      4   2
+let lca = new Node(10);
+lca.left = new Node(5);
+lca.right = new Node(8);
+lca.left.left = new Node(9);
+lca.left.right = new Node(3);
+lca.left.right.left = new Node(4);
+lca.left.right.right = new Node(2);
+lca.right.left = new Node(6);
+lca.right.right = new Node(4);
+
+const lowestCommonAncestor = (node, firstNode, secondNode) => {
+  // First, make sure the node passed in not null & both values were checking for exist in the tree. Otherwise, return null
+  if(node !== null && node.contains(firstNode) && node.contains(secondNode)){
+    // If either of the nodes passed in is the root value, return that root value since that will be the LCA
+    if(firstNode === this.value || secondNode === this.value){
+      return this;
+    }
+    // If the nodes passed in are the same value, return that value since that will be the LCA
+    if(firstNode === secondNode){
+      return firstNode;
+    }
+  } else {
+    return null;
+  }
+}
+
+const pathToNode = (node, value) => {
+  let stack = [];
+  if(node === null){
+    return null;
+  } else if (node.value === value){
+    stack.push(value)
+  } else {
+    let leftPath = pathToNode(node.left, value);
+    if(leftPath !== null){
+      stack.push(node);
+      return stack;
+    }
+    let rightPath = pathToNode(node.left, value);
+    if(rightPath !== null){
+      stack.push(node);
+      return stack;
+    }
+  }
+}
 

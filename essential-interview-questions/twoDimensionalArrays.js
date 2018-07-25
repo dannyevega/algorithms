@@ -52,7 +52,7 @@ const mineSweeper = (bombs, rows, cols) => {
     matrix[rowBomb][colBomb] = -1;
     for(let i = (rowBomb > 0 ? rowBomb - 1 : rowBomb); i <= (matrix[rowBomb + 1] ? rowBomb + 1 : rowBomb); i++){
       for(let j = (colBomb > 0 ? colBomb - 1 : colBomb); j <= (colBomb + 1 ? colBomb + 1 : colBomb); j++){
-        if(0 <= rowBomb && 0 <= colBomb && matrix[i][j] !== -1){
+        if(matrix[i][j] !== -1 && matrix[i][j] !== undefined){
           if(matrix[i][j] !== undefined){
             matrix[i][j] += 1;
           }
@@ -62,6 +62,23 @@ const mineSweeper = (bombs, rows, cols) => {
   }
   return matrix;
 };
+
+const mineSweeper = (bombs, rows, cols) => {
+  let matrix = new Array(rows).fill(0).map(row => new Array(cols).fill(0));
+  bombs.forEach(bomb => {
+    let rowBomb = bomb[0];
+    let colBomb = bomb[1];
+    matrix[rowBomb][colBomb] = -1;
+    for(let i = (rowBomb > 0 ? rowBomb - 1 : rowBomb); i <= (matrix[rowBomb + 1] ? rowBomb + 1 : rowBomb); i++){
+      for(let j = (colBomb > 0 ? colBomb - 1 : colBomb); j <= (colBomb + 1 ? colBomb + 1 : colBomb); j++){
+        if(matrix[i][j] !== -1 && matrix[i][j] !== undefined){
+          matrix[i][j] += 1;
+        }
+      }      
+    }    
+  });
+  return matrix;
+}
 
 // with notes
 const mineSweeper = (bombs, rows, cols) => {
@@ -78,7 +95,7 @@ const mineSweeper = (bombs, rows, cols) => {
       for(let j = (colBomb > 0 ? colBomb - 1 : colBomb); j <= (colBomb + 1 ? colBomb + 1 : colBomb); j++){
         // Were checking if the current cell is NOT another bomb AND if it is not undefined
         // We check if its not undefined to make sure it the cells dont fall out of range
-        // i.e. bomb = [0, 3] --> in case of the column, 3 + 1 is truthy BUT there is no index at position 4 so we skip it        
+        // i.e. bomb = [0, 3] --> in case of the column, 3 + 1 is truthy BUT there is no index at position 4 so we skip
         if(matrix[i][j] !== -1 && matrix[i][j] !== undefined){
           matrix[i][j] += 1; // Add 1 to the cell
         }
@@ -96,6 +113,8 @@ const mineSweeper = (bombs, rows, cols) => {
 
 
 // Write a click function that expands the previous minesweeper function. Anytime the user click (were just creating the function to simulate a click action) on a cell that does not contain any bombs near that cell (our case, any 0 clicked), it should reveal that cell as well all of the other cells that do not have bombs near them that are connected to that original cell. Change the cells to -2 to represent all of the revealed cells
+
+// YOU DONT REALLY NEED TO KNOW ROWS OR COLUMNS FOR THIS PROBLEM
 
 // Take the example below. 
 
@@ -143,7 +162,7 @@ const clickCell = (matrix, rows, cols, xCoord, yCoord) => {
   return matrix;
 }
 
-console.log(clickCell(matrix, 4, 4, 1, 2));
+console.log(clickCell(matrix, 1, 2));
 
 
 
@@ -171,6 +190,17 @@ const rotate2dArray = (matrix) => {
     result[i] = [];
     for(let j = 0, position = matrix.length - 1; j < matrix.length; j++, position--){
       result[i][j] = matrix[position][i];
+    }
+  }
+  return result;
+}
+
+const counter = (matrix) => {
+  let result = [];
+  for(let i = 0, inner = matrix.length - 1; i < matrix.length; i++, inner--){
+    result[i] = [];
+    for(let j = 0; j < matrix.length; j++){
+      result[i][j] = matrix[j][inner];
     }
   }
   return result;

@@ -291,6 +291,46 @@ const twoSum = (arr, target) => {
 
 
 
+// threeSum - returns all unique pairs that add up to target
+const threeSum = (arr, target) => {
+  let map = {}, uniq ={}, pairs = [];
+  for(let i = 0; i < arr.length; i++){
+    let current = arr[i];
+    let next = arr[i + 1];
+    let difference = target - (current + next);
+    if(map[difference] !== undefined){
+      let triplets = [difference, current, next].sort();
+      uniq[triplets] = triplets;
+    }
+    map[current] = true;
+  }
+  return Object.keys(uniq).map(current => uniq[current]);
+}
+// let arr = [-1, 0, 1, 2, -1, -4, 2, 2]
+// expected output: [ [ -1, 0, 1 ], [ -1, -1, 2 ], [ -4, 2, 2 ] ]
+
+
+// this will return ALL pairs, not only unique ones
+const threeSum = (arr, target) => {
+  let map = {}, pairs = [];
+  for(let i = 0; i < arr.length; i++){
+    let current = arr[i];
+    let next = arr[i + 1];
+    let difference = target - (current + next);
+    if(map[difference] !== undefined){
+      pairs.push([difference, current, next]);
+    }
+    map[current] = true;
+  }
+  return pairs;
+}
+
+// let arr = [-1, 0, 1, 2, -1, -4], target = 0;
+// expected output: [[-1, 0, 1], [-1, 2 -1]];
+// console.log(threeSum(arr, target));
+
+
+
 // binarySearch
 const binarySearch = (arr, target) => {
   let middle;
