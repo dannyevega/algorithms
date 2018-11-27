@@ -261,7 +261,7 @@ function reverseString(str){
 Write a function that takes a string and returns all permutations of the string. Ensure that there are no duplicates in the output.
 */
 function permutations(str){
-	let result = [];
+	let map = {}, result = [];
 	if(str.length === 1){
 		result.push(str);
 		return str;
@@ -271,11 +271,14 @@ function permutations(str){
 		let remainingChars = str.slice(0, i) + str.slice(i + 1);
 		let innerPermutations = permutations(remainingChars);
 		for(let j = 0; j < innerPermutations.length; j++){
-			result.push(current + innerPermutations[j]);
+      if(map[current + innerPermutations[j]] === undefined){
+        map[current + innerPermutations[j]] = true;
+      }
 		}
 	}
-	return result;
+	return Object.keys(map).map(current => current);
 }
+
 
 
 

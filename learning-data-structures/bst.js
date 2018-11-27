@@ -147,7 +147,7 @@ BST.prototype.breadthFirst = function(){
 		node = queue.shift();
 		result.push(node.value);
 		if(node.left !== null){
-			queue.push(node.left);
+			queue.push(node.left);	
 		}
 		if(node.right !== null){
 			queue.push(node.right);
