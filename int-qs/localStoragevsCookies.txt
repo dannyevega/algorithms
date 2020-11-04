@@ -1,0 +1,33 @@
+localStorage v. cookies v. sessionStorage
+  - these are all ways to store data in the browser for use later
+
+cookies:
+  - 4kb capacity
+  - supported in HTML4/HTML5
+  - accessible from any window
+  - manually set cookies in JS
+  - storage location in browser and server
+  - send with requests
+
+localStorage:
+  - 10mb capacity
+  - supported in HTML5
+  - accessible from any window
+  - never expires (until you clear it with JS or user clears it)
+  - storage location in browser only
+  - not sent with requests
+
+sessionStorage:
+  - 5mb capacity
+  - supported in HTML5
+  - accessible only from same tab
+  - ends when you close window/tab
+  - storage location in browser only
+  - not sent with requests  
+
+Key points:
+  - cookies are supported in older and newer browsers wheres as local and session are not
+  - biggest difference between localStorage/sessionStorage and cookies is that you are able to store cookies in the browser and server and you can send cookies with requests -- not able to do with localStorage/sessionStorage
+  - cookies are sent to the server on every request (loading an image, css, html, js, etc)
+  - cookies are best for data that needs to be accessed by server and local machine or when you want to set an expiration date
+  - cookies can be used for authentication 

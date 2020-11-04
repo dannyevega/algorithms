@@ -1,0 +1,166 @@
+<html>
+  <head>
+    <style>
+      body {
+        font-size: 17px;
+        font-family: "museo-sans", sans-serif;
+        background: #fff;
+        text-align: center;
+        line-height: 1.6;
+      }
+      .section-header, .section-content {
+        padding-right: 15px;
+        padding-left: 15px;
+      }      
+      .section-header {
+        margin-bottom: 20px;
+        padding: 20px 0 0 0;
+      }
+      .section-header h3 {
+        margin: 0 0 30px 0;
+        line-height: 0.6;
+        font-weight: 900;
+        font-size: 30px;
+        color: #000;
+        text-transform: uppercase;
+      }
+      .section-header p {
+        margin-bottom: 0;
+        font-size: 15px;
+        color: #888;
+      }      
+      .inline-columns > div {
+        float: left;
+      }
+      .service {
+        width: 33.33333333%;
+        margin-top: 20px;
+      }
+      .service:nth-child(3n+1) {
+        clear: left;
+      }
+      .service-title {
+        margin-bottom: 30px;
+        font-weight: 700;
+        font-size: 18px;
+        text-transform: uppercase;
+        color: rgb(121, 60, 130);
+      }   
+      .service-title h5 {
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.1;
+        color: inherit;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+      .service-entry {
+        color: #888;
+        padding: 0 10px;
+      } 
+      .service-entry a {
+        color: #0000EE;
+      } 
+      .solution-container {
+        padding-top: 50px;
+        clear: both;
+      }
+      .solution {
+        text-align: left;
+        padding: 20px;
+        font-size: 14px;
+        background: #D3D3D3;
+      }      
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <div class="section-header">
+        <h3>Benefits &amp; Perks</h3>
+        <p>
+          It’s not easy to redefine an industry. Because our employees are so dedicated to our mission, we strive to support them in living happy and fulfilling lives.
+        </p>
+      </div>
+      <div class="section-content">
+        <div class="inline-columns">
+          <div class="service">
+            <div class="service-title">
+              <h5>Health</h5>
+            </div>
+            <div class="service-entry">
+              The health of you and your family is important to us  -- so much so that we subsidize a large portion of healthcare premiums for not only you, but also your dependents. Our FSA allows you to shuttle tax-free dollars for out-of-pocket health care costs. <a>An onsite gym and a corporate gym membership</a> grease the wheels for your workout needs.
+            </div>
+          </div>
+          <div class="service">
+            <div class="service-title">
+              <h5>Paid Time Off</h5>
+            </div>
+            <div class="service-entry">
+              We recognize refreshed employees are productive employees. In addition to not putting a number on the amount of days an employee can take off, we reward them with a $500 annual bonus when they take five consecutive days off at some point during the year.
+            </div>
+          </div>
+          <div class="service">
+            <div class="service-title">
+              <h5>Commuting</h5>
+            </div>
+            <div class="service-entry">
+              Travel to work can be expensive, so on top of contributing toward your commuting expenses – including garage parking and public transit – we offer a corporate bikeshare membership at a steep discount. We also allow employees with pricier commutes to dedicate pretax dollars toward their travel.
+            </div>
+          </div>
+          <div class="service">
+            <div class="service-title">
+              <h5>Retirement</h5>
+            </div>
+            <div class="service-entry">
+              Your long term well-being is directly tied to your ability to save for the future. By offering a match on contributions you make to a company-sponsored 401(k), we make it hard not to think about the later years. 
+            </div>
+          </div>
+          <div class="service">
+            <div class="service-title">
+              <h5>Parental Leave</h5>
+            </div>
+            <div class="service-entry">
+              Building your family is just as important as building our business. We’re happy to empower our employees to spend time with their new little ones by providing 18 weeks of paid maternity and paternity leave after a year of service to the company.
+            </div>
+          </div>
+          <div class="service">
+            <div class="service-title">
+              <h5>Alternative Family Growth</h5>
+            </div>
+            <div class="service-entry">
+              Because we want all of FiscalNoters who desire to build a family to have that opportunity, we’re happy to provide <a>financial assistance</a> to those who pursue adoption or assisted conception. 
+            </div>
+          </div>    
+        </div>
+      </div>
+    </div>
+    <div class="solution-container">
+      <div class="solution">
+      </div>
+    </div>
+    <script>
+      /**
+       * Given a DOM node, write a function that returns the visible text nested in that node
+       * in reverse order in which it appears in the DOM.
+        
+       * example output: "to those who pursue adoption or assisted conception. financial assistance Because we want all of FiscalNoters who desire to build a family to have that opportunity, we’re happy to provide Alternative Family Growth Building your family is just as important as building our business. We’re happy to empower our employees to spend time with their new little ones by providing 18 weeks of paid maternity and paternity leave after a year of service to the company. Parental Leave Your long term well-being is directly tied to your ability to save for the future. By offering a match on contributions you make to a company-sponsored 401(k), we make it hard not to think about the later years. Retirement Travel to work can be expensive, so on top of contributing toward your commuting expenses – including garage parking and public transit – we offer a corporate bikeshare membership at a steep discount. We also allow employees with pricier commutes to dedicate pretax dollars toward their travel. Commuting We recognize refreshed employees are productive employees. In addition to not putting a number on the amount of days an employee can take off, we reward them with a $500 annual bonus when they take five consecutive days off at some point during the year. Paid Time Off grease the wheels for your workout needs. An onsite gym and a corporate gym membership The health of you and your family is important to us -- so much so that we subsidize a large portion of healthcare premiums for not only you, but also your dependents. Our FSA allows you to shuttle tax-free dollars for out-of-pocket health care costs. Health It’s not easy to redefine an industry. Because our employees are so dedicated to our mission, we strive to support them in living happy and fulfilling lives. Benefits & Perks"
+       */
+      function reverseText(node){
+        //node.children[node.children.length - 1].textContent; 
+        let result = '';
+        //let health = document.querySelector('.service-entry');
+        for(let i = node.childNodes.length - 1; i >= 0; i--){
+          result += node.childNodes[i].textContent;
+        }
+        return result;
+      }
+      
+      
+      var solutionEl = document.getElementsByClassName('solution')[0];
+      var el = document.getElementsByClassName('section')[0];
+
+      solutionEl.textContent = reverseText(el);
+    </script>
+  </body>
+</html>

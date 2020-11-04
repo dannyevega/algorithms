@@ -1,0 +1,36 @@
+What is an API? 
+- Application Programming Interface
+- basically allows one piece of software to talk to another
+
+RESTful API
+- REpresentational State Transfer
+- works the same way a website does: you make a call from a client to a server and get data back over the http protocol
+- when you hit a server and get data back, it usually comes back in JSON
+
+Authentication concepts
+- imagine we want to send out a tweet using the POST method
+- we'd need to set some type of authentication, otherwise, we'd be able to send tweets from anyones account -- we dont want that
+- OAUTH or OAUTH2 -- youre basically getting credentials kind of like a username and password but they're called clientId and clientSecret
+- you're then exchanging these for an access token
+- you then pass this access token to Twitter so they know the request to make the tweet is coming from you and send out the tweet from your Twitter account
+
+HTTP Request Methods
+- POST (Create):
+  - used to write data to the API -- best practice to put data in the body of the request -- normal browser does not let you to put data in the body of the request so you can set headers etc
+  - For example, let’s imagine that we are adding a new food item to the stored list of dishes for this restaurant, and the dish objects are stored in a dishes resource. If we wanted to create the new item, we would use a POST request
+  - send a POST request to the API along with the body data you want to create
+  - Upon successful creation, the server should return a header with a link to the newly-created resource, along with a HTTP response code of 201 (CREATED)
+
+- GET (Read): 
+  - used to consume data -- usually passing URL parameters to an external API to get some data back
+  - Reading a resource should never change any information - it should only retrieve it
+  - returns Status Code 200
+
+- PUT (Update):
+  - used to update data by passing along an id to the particular item
+  - For example, if the price of Avocado Toast has gone up from our dishes example, we should go into the database and update that information. We can do this with a PUT request
+  - The response includes a Status Code of 200 (OK) to signify that the operation was successful, but it need not return a response body
+
+- DELETE (Delete):
+  - used to remove a resource from the system by passing an id
+  - Such a call, if successful, returns a response code of 204 (NO CONTENT), with no response body
